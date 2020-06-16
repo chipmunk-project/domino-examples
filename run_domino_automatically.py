@@ -29,6 +29,8 @@ total_num_of_stages = 0
 # total_num_of_width stores the total number of ALUs used per stage
 total_num_of_width = 0
 
+(_,_) = subprocess.getstatusoutput('mutator domino_programs/' + program_file_name + '.c')
+
 for i in range(num_of_mutators):
   program_file = "/tmp/" + program_file_name + "_equivalent_" + str(i+1) + ".c"
   print(program_file)
