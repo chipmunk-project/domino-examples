@@ -5,7 +5,7 @@ import sys
 This program runs domino automatically.
 In ~/domino-examples folder run:
 
-python3 marple_new_flow banzai_atoms/pred_raw.sk 10 
+python3 run_domino_automatically.py marple_new_flow banzai_atoms/pred_raw.sk 10 
 
 It will output how many mutators successfully compile with atoms provided.
 """
@@ -32,4 +32,4 @@ for i in range(num_of_mutators):
     Sum += 1
 
 print("The successful compilation rate for " + program_file_name +
-      "mutators is " + str(Sum/num_of_mutators))
+      "mutators by domino is " + str(Sum/num_of_mutators))
