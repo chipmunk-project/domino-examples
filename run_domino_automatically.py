@@ -12,8 +12,8 @@ It will output how many mutators successfully compile with atoms provided.
 """
 
 if (len(sys.argv) != 4):
-   print("Usage: python3 " + argv[0] + 
-        " <domino program filename> <atom file> <number of mutators> ")
+   print("Usage: python3 " + argv[0] + \
+         " <domino program filename> <atom file> <number of mutators> ")
    sys.exit(1)
 # Sum stores the total number of successful compilation files
 Sum = 0
@@ -34,9 +34,9 @@ total_num_of_width = 0
 for i in range(num_of_mutators):
   program_file = "/tmp/" + program_file_name + "_equivalent_" + str(i+1) + ".c"
   print(program_file)
-  # Now we just set the pipeline width and depth to be 20 10
+  # Now we just set the pipeline width and depth to be 30 10
   (ret_code,output) = subprocess.getstatusoutput('domino ' + program_file + 
-                                                 ' ' + atom_file + ' 20 10')
+                                                 ' ' + atom_file + ' 30 10')
   if (output.find("/tmp/debug") == -1 and ret_code == 0):
     print("Successful file is No." + str(i+1))
     length = re.findall(r"Total of (\d+) stages", output)
@@ -48,7 +48,7 @@ for i in range(num_of_mutators):
     Sum += 1
 
 print("The successful compilation rate for " + program_file_name +
-      "mutators by domino is " + str(Sum/num_of_mutators))
+      " mutators by domino is " + str(Sum/num_of_mutators))
 if (Sum > 0):
-    print("The avg num of stages is: " + str(total_num_of_stages/Sum))
-    print("The avg num of ALUs per stage is: " + str(total_num_of_width/Sum))
+    print("The avg num of stages is: " + str(round(total_num_of_stages/Sum, 1)))
+    print("The avg num of ALUs per stage is: " + str(round(total_num_of_width/Sum, 1)))
