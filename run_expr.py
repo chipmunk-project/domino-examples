@@ -29,6 +29,15 @@ for i in range(len(program_file_list)):
                                                     program_name + \
                                                     ' banzai_atoms/' + atom_name + ' 10')
     print('program_name =', program_name)
-    print('ret_code =', ret_code)
-    print('output = ', output)
-    print('----------------------------------------------\n')
+    m = re.findall(r'The successful compilation rate for ' +\
+                   program_file_list[i] + ' mutators by domino is (\d+\.\d+)?', output)
+    if (m[0] != '0.0'):
+        print('Domino succeeds for ' + str(int(float(m[0]) * 100)) + '% ' + program_file_list[i] + \
+              ' with atom ' + atom_file_list[i])
+        length = re.findall(r"The avg num of stages is: (\d+\.\d+)", output)
+        width = re.findall(r"The avg num of ALUs per stage is: (\d+\.\d+)", output)
+        print('Avg num of stages is ' + length[0] + ' and avg num of ALUs per stage is ' + width[0])
+    else:
+        print('Domino fails for all ' + program_file_list[i] + ' with atom ' + \
+              atom_file_list[i])
+    print('--------------------------------------------------------------\n')
