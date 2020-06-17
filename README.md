@@ -1,9 +1,9 @@
-Prerequisites: graphviz binaries
+run domino for a specific domino program
+```
+python3 run_domino_automatically.py <domino program filename> <atom file> 10 
+```
 
-Repository containing example data-plane algorithms and
-atom templates to generate matrix of results.
-
-This matrix indicates whether or not a codelet within a data-plane
-algorithm maps to a particular atom template.
-
-An example matrix is in example_matrix.txt
+run experiments together
+```
+python3 run_expr.py
+```
