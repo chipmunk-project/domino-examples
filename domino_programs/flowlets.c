@@ -1,5 +1,3 @@
-#include "hashes.h"
-
 #define NUM_FLOWLETS 8000
 #define THRESHOLD    5
 #define NUM_HOPS     10
@@ -17,14 +15,9 @@ int last_time [NUM_FLOWLETS] = {0};
 int saved_hop [NUM_FLOWLETS] = {0};
 
 void flowlet(struct Packet pkt) {
-  pkt.new_hop = hash3(pkt.sport,
-                      pkt.dport,
-                      pkt.arrival)
-                % NUM_HOPS;
+  pkt.new_hop = pkt.new_hop;
 
-  pkt.id  = hash2(pkt.sport,
-                  pkt.dport)
-            % NUM_FLOWLETS;
+  pkt.id  = pkt.id;
 
   if (pkt.arrival -
       last_time[pkt.id] >
