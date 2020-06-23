@@ -6,7 +6,7 @@ import re
 This program runs domino automatically.
 In ~/domino-examples folder run:
 
-python3 run_expr.py 
+python3 run_all_domino_examples.py 
 
 It will output how many mutators successfully compile with atoms provided.
 """
